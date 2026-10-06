@@ -1,0 +1,49 @@
+/* Cohesive learning journey. Graphic imagery + accessible live campaign copy. */
+:root{color:#092867;background:#edf2f7}
+.page-shell{background:#eaf4ff;box-shadow:0 12px 55px #15396b14}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.campaign-hero{position:relative;aspect-ratio:1024/1320;background:#eaf3ff url('assets/hero-production-v3.png') top center/100% auto no-repeat;overflow:hidden}
+.campaign-label{font-size:.78rem;letter-spacing:.08em;color:#4c6690;font-weight:800;margin:0 0 18px}
+.campaign-hero>.campaign-label{position:absolute;top:6.8%;left:7.1%;font-size:clamp(.75rem,2.6vw,.94rem);color:#0a3383}
+.campaign-hero h1{position:absolute;left:6.9%;top:12%;margin:0;font-size:clamp(2.15rem,10.5vw,3.75rem);letter-spacing:-.055em;line-height:1.15;font-weight:900;color:#002573}
+.campaign-hero h1 strong{font-weight:900}
+.campaign-intro{position:absolute;top:32%;left:7.1%;font-size:clamp(.75rem,2.8vw,1rem);line-height:1.7;margin:0;color:#143166}
+.campaign-dates{position:absolute;left:10%;right:10%;top:80.5%;display:grid;grid-template-columns:1fr 1fr;text-align:center}
+.campaign-dates>div+div{border-left:1px solid #94b1d7}
+.campaign-dates span{display:block;font-size:clamp(.7rem,2.8vw,.96rem);margin-bottom:3px}
+.campaign-dates strong{font-size:clamp(1.05rem,4.6vw,1.65rem);font-weight:900;letter-spacing:-.05em}.campaign-dates small{font-size:.75rem;margin-left:4px;font-weight:700}
+.campaign-button{display:flex;align-items:center;justify-content:center;gap:14px;background:#002f90;color:#fff;text-align:center;font-size:.96rem;font-weight:800;text-decoration:none;padding:16px 20px;border-radius:28px;box-shadow:0 5px 15px #124ea01a}
+.campaign-button:hover{background:#0043ba}.campaign-button span{font-size:1.3rem;line-height:1}
+.campaign-hero>.campaign-button{position:absolute;top:90%;left:22%;right:22%;font-size:clamp(.74rem,2.7vw,.96rem);padding:13px 5px}
+.editorial-section{position:relative;padding:52px 30px;background:#edf5ff}
+.editorial-section h2{font-size:clamp(1.6rem,6.5vw,2.2rem);line-height:1.35;font-weight:900;letter-spacing:-.055em;margin:0 0 23px;color:#0a2d6e}
+.editorial-section em{font-style:normal;color:#034bba}
+.preparation{background:linear-gradient(155deg,#eaf3ff,#f7fbff);padding-top:37px;padding-bottom:47px}
+.preparation:before{content:'';display:block;width:35px;height:2px;background:#003783;margin-bottom:22px}
+.preparation .reason-list{border:0;display:grid;gap:10px;margin-top:28px}
+.preparation .reason-list article{border:1px solid #e0eafa;border-radius:12px;background:#ffffffd6;grid-template-columns:32px 1fr;box-shadow:0 4px 10px #21467c08;padding:16px}
+.reason-number{color:#2467be;font-size:.85rem}.preparation .reason-list h3{font-size:1rem;color:#173467;margin-bottom:5px}.preparation .reason-list p{color:#5c718c;font-size:.82rem;line-height:1.7}.reason-conclusion{font-size:.94rem;color:#385c86}.reason-conclusion strong{color:#034baa}
+.assessment-benefits{background:linear-gradient(#f7fbff,#f0f6ff);padding-top:47px}
+.accent-label{color:#d77d33}.benefit-intro{position:relative;min-height:132px;margin:-3px 0 5px}.benefit-intro p{position:relative;z-index:1;font-size:.91rem;line-height:1.85;color:#4b678b;padding-top:14px}.benefit-intro img{position:absolute;right:-6px;top:-21px;width:46%;height:157px;object-fit:contain}
+.benefit-lines{list-style:none;padding:0;margin:12px 0 25px;display:grid;gap:12px}
+.benefit-lines li{display:flex;gap:13px;padding:18px;background:#fff;border:1px solid #dae5f5;border-radius:12px;box-shadow:0 6px 16px #294e8109}
+.benefit-lines li>span{font-size:1.2rem;font-weight:900;color:#316cb5;line-height:1.4}.benefit-lines li>div{flex:1;min-width:0}.benefit-lines h3{font-size:1rem;line-height:1.55;letter-spacing:-.045em;margin:0 0 7px;color:#123e78}.benefit-lines p{font-size:.78rem;line-height:1.7;color:#66809d;margin:0}
+.voucher-benefit>div{position:relative;padding-right:97px;min-height:72px}.voucher-ticket{position:absolute;right:0;top:3px;width:91px;min-height:64px;border:1px solid #b8cef1;border-radius:8px;transform:rotate(-5deg);background:#eaf2ff;color:#003e9b;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:3px 5px 0 #dfe9f8}.voucher-ticket span{font-size:.7rem}.voucher-ticket strong{font-size:1rem;line-height:1.5}
+.achievement{background:linear-gradient(150deg,#e1eeff,#f5f9ff);overflow:hidden;text-align:center}
+.achievement:before{content:'';position:absolute;width:520px;height:150px;border:2px solid #fff8;border-radius:50%;left:-150px;top:300px;transform:rotate(-24deg);pointer-events:none}
+.achievement .campaign-label{margin-bottom:12px}.achievement h2{margin-bottom:30px}
+.score-lines{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.score-lines>div{display:flex;flex-direction:column-reverse;align-items:center;justify-content:center;gap:13px;padding:24px 10px;border:1px solid #d6e4f8;background:linear-gradient(145deg,#fff,#f4f8ff);border-radius:16px;box-shadow:0 9px 0 #dbe7f74d,0 15px 22px #28539009}
+.score-lines>div:last-child{grid-column:1/-1;flex-direction:row;gap:23px;background:#fff9ef;border-color:#ecdcc3;padding:20px}
+.score-lines strong{font-size:clamp(3rem,15vw,5rem);font-weight:900;letter-spacing:-.06em;line-height:1;color:#003d9a;white-space:nowrap}.score-lines small{font-size:.85rem;margin-left:3px;letter-spacing:0}
+.score-lines span{font-size:1.03rem;font-weight:800;color:#355579;line-height:1.3}.score-lines span br{display:none}.score-lines>div:last-child strong{font-size:3.4rem}.score-lines>div:last-child span{color:#84602e}.achievement-period{font-size:.72rem;color:#6681a3;margin:25px 0 26px}.achievement-message{position:relative;font-size:.88rem;line-height:1.85;color:#536e92;margin:0}.achievement-message strong{color:#0d3b78}
+.rewards{background:linear-gradient(#f5f9ff,#edf4fe);text-align:center;padding-bottom:35px}
+.reward-question{font-size:.92rem;line-height:1.8;color:#4d6a90;margin:0 0 16px}
+.reward-scenes{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px;min-height:405px;margin-left:-16px;margin-right:-16px;isolation:isolate}
+.reward-scenes article{position:relative;z-index:1;text-align:center;padding:21px 8px 0}.reward-scenes article>span{display:inline-block;font-size:.77rem;font-weight:800;color:#30577f;background:#fff;border:1px solid #d6e2f3;border-radius:20px;padding:6px 13px}.reward-scenes h3{font-size:1.08rem;letter-spacing:-.05em;margin:12px 0 7px;color:#153b72}.reward-scenes strong{display:block;font-size:3.75rem;line-height:1.08;letter-spacing:-.07em;font-weight:900;color:#003e9a}.reward-scenes article p{font-size:.79rem;color:#607da1;margin:6px 0 0}
+.reward-panorama{position:absolute;z-index:0;bottom:0;left:-14px;width:calc(100% + 28px);max-width:none;mix-blend-mode:multiply;mask-image:linear-gradient(to bottom,transparent,#000 27%);pointer-events:none}
+.rewards .fine-print{font-size:.74rem;color:#6b81a0;text-align:left;line-height:1.8;margin:21px 0 0}
+.consultation{background:#f4f8fd;color:#173d71}.consultation .section-index{color:#406b9c;letter-spacing:.03em}.consultation .section-lead{font-size:.91rem;color:#587291}.application-form{box-shadow:0 8px 22px #28518c07;border-color:#dae4f2}
+.primary-link,.sticky-link,.submit-btn{background:#00358f}.primary-link:hover,.sticky-link:hover,.submit-btn:hover{background:#0046b1}.sticky-link{box-shadow:0 -3px 15px #20458010;font-size:.92rem}
+@media(max-width:380px){.editorial-section{padding-left:23px;padding-right:23px}.campaign-hero h1{font-size:2.15rem}.campaign-hero>.campaign-label{font-size:.7rem}.campaign-intro{font-size:.7rem}.campaign-dates strong{font-size:1rem}.campaign-dates small{font-size:.65rem}.campaign-hero>.campaign-button{padding:10px 4px}.benefit-intro img{width:45%;right:-8px}.benefit-intro p{font-size:.82rem}.benefit-lines li{padding:15px 12px;gap:10px}.benefit-lines h3{font-size:.91rem}.voucher-benefit>div{padding-right:0}.voucher-ticket{position:relative;width:102px;margin:12px 0 0}.reward-scenes{min-height:355px}.reward-scenes h3{font-size:.98rem}.reward-scenes strong{font-size:3.2rem}.score-lines strong{font-size:2.8rem}.score-lines span{font-size:.91rem}}
+@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}}
