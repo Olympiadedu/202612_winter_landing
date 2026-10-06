@@ -2,19 +2,20 @@
 :root{color:#092867;background:#edf2f7}
 .page-shell{background:#eaf4ff;box-shadow:0 12px 55px #15396b14}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.campaign-hero{position:relative;aspect-ratio:1024/1320;background:#eaf3ff url('assets/hero-production-v3.png') top center/100% auto no-repeat;overflow:hidden}
+.campaign-hero{position:relative;container-type:inline-size;padding-top:103.77%;background:#eaf3ff url('assets/hero-production-v3.png') top center/100% auto no-repeat;overflow:hidden}
 .campaign-label{font-size:.78rem;letter-spacing:.08em;color:#4c6690;font-weight:800;margin:0 0 18px}
-.campaign-hero>.campaign-label{position:absolute;top:6.8%;left:7.1%;font-size:clamp(.75rem,2.6vw,.94rem);color:#0a3383}
-.campaign-hero h1{position:absolute;left:6.9%;top:12%;margin:0;font-size:clamp(2.15rem,10.5vw,3.75rem);letter-spacing:-.055em;line-height:1.15;font-weight:900;color:#002573}
+.campaign-hero>.campaign-label{position:absolute;top:8.77cqw;left:7.1%;font-size:clamp(.75rem,2.6vw,.94rem);color:#0a3383}
+.campaign-hero h1{position:absolute;left:6.9%;top:15.47cqw;margin:0;font-size:clamp(2.15rem,10.5vw,3.75rem);letter-spacing:-.055em;line-height:1.15;font-weight:900;color:#002573}
 .campaign-hero h1 strong{font-weight:900}
-.campaign-intro{position:absolute;top:32%;left:7.1%;font-size:clamp(.75rem,2.8vw,1rem);line-height:1.7;margin:0;color:#143166}
-.campaign-dates{position:absolute;left:10%;right:10%;top:80.5%;display:grid;grid-template-columns:1fr 1fr;text-align:center}
+.campaign-intro{position:absolute;top:41.25cqw;left:7.1%;font-size:clamp(.75rem,2.8vw,1rem);line-height:1.7;margin:0;color:#143166}
+.hero-enrollment{padding:12px 0 38px}
+.campaign-dates{margin:0 10%;display:grid;grid-template-columns:1fr 1fr;text-align:center}
 .campaign-dates>div+div{border-left:1px solid #94b1d7}
-.campaign-dates span{display:block;font-size:clamp(.7rem,2.8vw,.96rem);margin-bottom:3px}
+.campaign-dates span{display:block;font-size:clamp(.7rem,2.8vw,.96rem);margin-bottom:8px}
 .campaign-dates strong{font-size:clamp(1.05rem,4.6vw,1.65rem);font-weight:900;letter-spacing:-.05em}.campaign-dates small{font-size:.75rem;margin-left:4px;font-weight:700}
 .campaign-button{display:flex;align-items:center;justify-content:center;gap:14px;background:#002f90;color:#fff;text-align:center;font-size:.96rem;font-weight:800;text-decoration:none;padding:16px 20px;border-radius:28px;box-shadow:0 5px 15px #124ea01a}
 .campaign-button:hover{background:#0043ba}.campaign-button span{font-size:1.3rem;line-height:1}
-.campaign-hero>.campaign-button{position:absolute;top:90%;left:22%;right:22%;font-size:clamp(.74rem,2.7vw,.96rem);padding:13px 5px}
+.hero-enrollment>.campaign-button{margin:26px 22% 0;font-size:clamp(.74rem,2.7vw,.96rem);padding:13px 5px}
 .editorial-section{position:relative;padding:52px 30px;background:#edf5ff}
 .editorial-section h2{font-size:clamp(1.6rem,6.5vw,2.2rem);line-height:1.35;font-weight:900;letter-spacing:-.055em;margin:0 0 23px;color:#0a2d6e}
 .editorial-section em{font-style:normal;color:#034bba}
