@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="journey.css?v=20261006-spacing">
+  <link rel="stylesheet" href="application-form.css?v=20261012-original-form">
 </head>
 <body>
   <div class="page-shell">
@@ -97,46 +98,111 @@
         <p class="section-index">무료 학력진단평가 신청</p>
         <h2 id="consultation-title">지금의 학습을 확인하고,<br>새 학년을 준비하세요!</h2>
         <p class="section-lead">무료 진단평가 결과를 바탕으로 우리 아이에게 필요한 겨울학기 학습 방향을 상담해 드립니다.</p>
-        <form class="application-form" id="applicationForm">
-          <p class="form-intro">캠퍼스와 전형과목을 선택하면 응시 가능한 일정을 확인하는 신청 화면입니다.</p>
-          <p class="form-prelaunch" id="connectionStatus" role="status">신청 정보를 불러오는 중입니다.</p>
-          <div class="form-grid">
-            <label>학생명<input name="studentName" autocomplete="name" placeholder="학생명" required maxlength="40"></label>
-            <label>연락처<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" required pattern="[0-9\- ]{9,15}"></label>
-            <label>현재 학년<select name="grade" required><option value="">선택</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select></label>
-            <label>학교명<input name="school" placeholder="학교명" required maxlength="80"></label>
-            <label>캠퍼스<select name="campus" required disabled><option value="">불러오는 중</option></select></label>
-            <label>전형과목<select name="subject" required disabled><option value="">캠퍼스 선택 후 표시</option></select></label>
-          </div>
-          <div class="calendar" aria-label="응시 일정 캘린더">
-            <div class="calendar-head"><button type="button" id="prevMonth" aria-label="이전 달">‹</button><strong id="calendarMonth">2026년 11월</strong><button type="button" id="nextMonth" aria-label="다음 달">›</button></div>
-            <div class="calendar-weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
-            <div class="calendar-days" id="calendarDays"></div>
-          </div>
-          <p class="calendar-note">현재 학년·캠퍼스·과목을 선택한 뒤 날짜와 시간을 선택해주세요.</p>
-          <div class="time-options" id="timeOptions" aria-label="응시 시간"></div>
-          <div class="selected-summary"><p><span>희망날짜</span><strong>일정 선택 전</strong></p><p><span>희망시간</span><strong>시간 선택 전</strong></p></div>
-          <div class="privacy-consent">
-            <details class="privacy-details">
-              <summary><span class="privacy-summary-title">개인정보 수집 및 이용 동의</span><span class="privacy-summary-hint">내용 보기</span></summary>
-              <div class="privacy-box" tabindex="0">
-                <p>(주)올림피아드교육은 고객상담과 학력진단 및 설명회 신청시 다음과 같이 개인정보를 수집하고 있습니다. 수집한 개인정보는 “개인정보보호법”에 따라 보호하며, 개인정보 수집·이용목적 외로 처리하거나 정보주체의 동의 없이 외부에 제공 및 공유하지 않습니다. 또한, 개인정보가 분실·도난·유출·변조·훼손되지 않도록 안정성 확보에 필요한 조치를 취합니다.</p>
-                <h4>1. 수집하는 개인정보 항목</h4>
-                <p>(필수) 학생명, 연락처(자택 또는 휴대폰)<br>(선택) 학년, 학교명, 학부모이름, 이메일, 상담구분, 알게된 경로</p>
-                <h4>2. 개인정보의 수집 및 이용목적</h4>
-                <p>가. 고객 문의 응대 및 상담<br>나. 설명회 신청 참석 대상자 확인<br>다. 학력진단 신청 및 접수</p>
-                <h4>3. 개인정보의 보유 및 이용기간</h4>
-                <p>원칙적으로 개인정보의 수집 및 이용 목적이 달성된 후에는 이용자의 개인정보를 지체 없이 파기 합니다. 단, 회사 업무 및 통신비밀보호법, 전자상거래법 등 관련 법령에 의한 정보보호 및 보유 필요시 명시 기간 동안 다음과 같은 목적을 위해 보존합니다.</p>
-                <p>- 상담 및 설명회, 학력진단 업무처리, 분쟁 조정을 위한 기록보존, 불만 처리 등 민원처리, 고지사항 전달, 교육정보 제공</p>
-                <p>- 서비스 별 이용 및 보유 기간<br>• 입학상담 : 업무 종료후 6개월<br>• 학력진단 : 업무 종료후 6개월<br>• 설명회 : 행사 종료후 10일</p>
-                <h4>4. 개인정보 수집 · 이용에 대한 동의를 거부하실 수 있습니다.</h4>
-                <p>단, 필수 항목에 동의하지 않으시면 상담, 설명회, 학력진단 안내에 일부 제한이 있습니다.</p>
-              </div>
-            </details>
-            <label class="privacy-check"><input id="privacyAgree" name="privacyAgree" type="checkbox" required><span>개인정보 수집 및 이용에 동의합니다. (필수)</span></label>
-          </div>
-          <button class="submit-btn" id="submitButton" type="submit" disabled>신청하기</button>
-          <p class="submit-status" id="submitStatus" role="status" aria-live="polite"></p>
+        <form id="applicationForm" class="form-wrap">
+            <div class="form-grid" style="margin-bottom:18px;">
+                <div class="form-field" style="margin-bottom:0;">
+                    <label>학생명 <b>*</b></label>
+                    <input name="studentName" required placeholder="예: 김민준">
+                </div>
+                <div class="form-field" style="margin-bottom:0;">
+                    <label>연락처 <b>*</b></label>
+                    <input name="phone" type="tel" required placeholder="010-0000-0000">
+                </div>
+            </div>
+            <div class="form-grid" style="margin-bottom:18px;">
+                <div class="form-field" style="margin-bottom:0;">
+                    <label>학년 <b>*</b></label>
+                    <select name="grade" required>
+                        <option value="">선택</option>
+                        <option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option>
+                        <option>중1</option><option>중2</option><option>중3</option>
+                        <option>고1</option><option>고2</option><option>고3</option>
+                    </select>
+                </div>
+                <div class="form-field" style="margin-bottom:0;">
+                    <label>학교명 <b>*</b></label>
+                    <input name="school" required placeholder="학교명">
+                </div>
+            </div>
+            <div class="form-grid" style="margin-bottom:18px;">
+                <div class="form-field" style="margin-bottom:0;">
+                    <label>캠퍼스 <b>*</b></label>
+                    <select id="campusSelect" name="campus" required>
+                        <option value="">캠퍼스 선택</option>
+                    </select>
+                </div>
+                <div class="form-field" style="margin-bottom:0;">
+                    <label>전형과목 <b>*</b></label>
+                    <select id="subjectSelect" name="subject" required disabled>
+                        <option value="">캠퍼스를 먼저 선택</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="cal-wrap">
+                <div class="cal-head">
+                    <button id="prevMonthButton" type="button" aria-label="이전 달">‹</button>
+                    <strong id="monthTitle">2026.11</strong>
+                    <button id="nextMonthButton" type="button" aria-label="다음 달">›</button>
+                </div>
+                <div class="cal-days-header">
+                    <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+                </div>
+                <div id="calendarDays" class="cal-days"></div>
+            </div>
+
+            <div class="time-wrap">
+                <h4>희망시간 선택</h4>
+                <div id="timeList" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+            </div>
+
+            <div class="date-row">
+                <div class="date-box">
+                    <div class="lbl">희망날짜</div>
+                    <strong id="selectedDateText">날짜 선택 전</strong>
+                </div>
+                <div class="date-box">
+                    <div class="lbl">희망시간</div>
+                    <strong id="selectedTimeText">시간 선택 전</strong>
+                </div>
+            </div>
+
+            <input type="hidden" name="region" value="서울특별시">
+            <input type="hidden" name="referralSource" value="기타">
+            <input type="hidden" name="referralDetail" value="랜딩">
+
+            <p class="form-note">※ 캠퍼스에서 확인을 위해 연락을 드릴 수 있습니다.</p>
+            <p id="submitStatus" class="form-status" role="status" aria-live="polite"></p>
+
+            <div class="privacy-consent">
+                <details class="privacy-details">
+                    <summary>
+                        <span class="privacy-summary-title">개인정보 수집 및 이용 동의</span>
+                        <span class="privacy-summary-hint">내용 보기</span>
+                    </summary>
+                    <div class="privacy-box" tabindex="0">
+                        <p>(주)올림피아드교육은 고객상담과 학력진단 및 설명회 신청시 다음과 같이 개인정보를 수집하고 있습니다. 수집한 개인정보는 “개인정보보호법”에 따라 보호하며, 개인정보 수집·이용목적 외로 처리하거나 정보주체의 동의 없이 외부에 제공 및 공유하지 않습니다. 또한, 개인정보가 분실·도난·유출·변조·훼손되지 않도록 안정성 확보에 필요한 조치를 취합니다.</p>
+                        <h4>1. 수집하는 개인정보 항목</h4>
+                        <p>(필수) 학생명, 연락처(자택 또는 휴대폰)<br>(선택) 학년, 학교명, 학부모이름, 이메일, 상담구분, 알게된 경로</p>
+                        <h4>2. 개인정보의 수집 및 이용목적</h4>
+                        <p>가. 고객 문의 응대 및 상담<br>나. 설명회 신청 참석 대상자 확인<br>다. 학력진단 신청 및 접수</p>
+                        <h4>3. 개인정보의 보유 및 이용기간</h4>
+                        <p>원칙적으로 개인정보의 수집 및 이용 목적이 달성된 후에는 이용자의 개인정보를 지체 없이 파기 합니다. 단, 회사 업무 및 통신비밀보호법, 전자상거래법 등 관련 법령에 의한 정보보호 및 보유 필요시 명시 기간 동안 다음과 같은 목적을 위해 보존합니다.</p>
+                        <p>- 상담 및 설명회, 학력진단 업무처리, 분쟁 조정을 위한 기록보존, 불만 처리 등 민원처리, 고지사항 전달, 교육정보 제공</p>
+                        <p>- 서비스 별 이용 및 보유 기간<br>• 입학상담 : 업무 종료후 6개월<br>• 학력진단 : 업무 종료후 6개월<br>• 설명회 : 행사 종료후 10일</p>
+                        <h4>4. 개인정보 수집 · 이용에 대한 동의를 거부하실 수 있습니다.</h4>
+                        <p>단, 필수 항목에 동의하지 않으시면 상담, 설명회, 학력진단 안내에 일부 제한이 있습니다.</p>
+                    </div>
+                </details>
+                <label class="privacy-check">
+                    <input id="privacyAgree" name="privacyAgree" type="checkbox" required>
+                    <span>개인정보 수집 및 이용에 동의합니다. (필수)</span>
+                </label>
+            </div>
+
+            <button id="submitButton" type="submit" class="submit-btn" disabled>
+                신청하기 <i class="fa-solid fa-chevron-right" style="margin-left:6px;font-size:13px;"></i>
+            </button>
         </form>
       </section>
     </main>
@@ -170,7 +236,18 @@
     </footer>
   </div>
   <a class="sticky-link" href="#consultation">무료 진단평가 신청하기</a>
-  <script src="schedule-rules.js?v=20261012-autumn-rules"></script>
-  <script src="application.js?v=20261012-autumn-rules"></script>
+<div id="completeModal" class="complete-modal" hidden>
+    <div class="complete-box" role="dialog" aria-modal="true" aria-labelledby="completeTitle">
+        <div class="complete-icon" aria-hidden="true">✓</div>
+        <h3 id="completeTitle">신청완료</h3>
+        <p class="complete-note">이 페이지를 캡쳐해서 오시면<br><strong>3가지 혜택</strong>을 받으실 수 있습니다.</p>
+        <p class="complete-caption">※ 캠퍼스에서 확인을 위해 연락을 드릴 수 있습니다.</p>
+        <button id="completeCloseButton" type="button" class="complete-close">확인</button>
+    </div>
+</div>
+
+
+  <script src="config.js?v=20261012-original-form"></script>
+  <script src="application-form.js?v=20261012-original-form"></script>
 </body>
 </html>
