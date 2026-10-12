@@ -217,3 +217,26 @@
 .complete-icon{background:#123982}
 .complete-box .complete-note{background:#eaf1ff;border-color:#86a5dd;color:#123982;box-shadow:none}
 .complete-box .complete-note strong{color:#123982}
+.cal-wrap[hidden],.time-wrap[hidden],.date-row[hidden]{display:none}
+#applicationForm.form-wrap{padding:18px;border-radius:20px}
+#applicationForm .form-grid{margin-bottom:12px!important;gap:10px}
+#applicationForm .form-field label{font-size:13px;margin-bottom:5px}
+#applicationForm .form-field input,#applicationForm .form-field select{height:44px;border-radius:10px;padding:0 11px;font-size:14px}
+#applicationForm .cal-wrap{margin-bottom:12px;border-radius:12px}
+#applicationForm .cal-head{height:44px}
+#applicationForm .cal-days-header{padding:7px 0;font-size:10px}
+#applicationForm .cal-days{padding:7px 4px}
+#applicationForm .cal-day{height:36px;max-width:100%;font-size:13px}
+#applicationForm .time-wrap{padding:10px 12px;margin-bottom:12px;border-radius:10px}
+#applicationForm .time-wrap h4{margin:0 0 7px}
+#applicationForm .time-wrap p{margin:0;font-size:12px}
+#applicationForm .date-row{margin-bottom:10px}
+#applicationForm .date-box{padding:7px 10px;border-radius:8px}
+#applicationForm .form-note{margin:8px 0;font-size:11px}
+#applicationForm .form-status:empty{display:none}
+#applicationForm .form-status{margin:8px 0;min-height:0}
+#applicationForm .privacy-consent{margin-bottom:12px}
+#applicationForm .privacy-details summary{min-height:42px;padding-top:9px;padding-bottom:9px}
+#applicationForm .privacy-check{padding-top:9px;padding-bottom:9px;font-size:12px}
+#applicationForm .submit-btn{padding:14px;border-radius:12px}
+@media(max-width:430px){.consultation.section{padding-top:36px;padding-bottom:42px}.consultation h2{font-size:1.65rem;margin-bottom:16px}.consultation .section-lead{font-size:13px;line-height:1.65;margin-bottom:18px}#applicationForm.form-wrap{padding:14px}#applicationForm .form-field input,#applicationForm .form-field select{font-size:13px}}

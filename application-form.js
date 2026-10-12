@@ -171,6 +171,7 @@ const submitButtonDefaultHtml = submitButton.innerHTML;
 let isSubmitting = false;
 let completionRedirectUrl = "";
 let completionSelection = null;
+let completionWindow = null;
 let completionAnalyticsPromise = Promise.resolve();
 let scheduleRefreshPromise = null;
 let isScheduleReady = false;
@@ -595,6 +596,8 @@ function updateMonthControls() {
 
 function renderCalendar() {
   const { year, month } = getCurrentMonth();
+  document.querySelector('.cal-wrap').hidden = !state.campusId || !state.subjectId;
+  document.querySelector('#calendarInstruction').hidden = !!state.campusId && !!state.subjectId;
   const firstWeekday = new Date(year, month - 1, 1).getDay();
   const lastDay = new Date(year, month, 0).getDate();
 
@@ -651,6 +654,7 @@ function selectDate(date) {
 
 function renderTimes() {
   timeList.innerHTML = "";
+  document.querySelector('.time-wrap').hidden = !state.date;
 
   if (!state.campusId || !state.subjectId || !state.date) {
     const empty = document.createElement("p");
@@ -691,6 +695,7 @@ function renderTimes() {
 }
 
 function updateSummary() {
+  document.querySelector('.date-row').hidden = !state.date;
   selectedDateText.textContent = state.date || "날짜 선택 전";
   selectedTimeText.textContent = state.time || "시간 선택 전";
 }
@@ -745,6 +750,15 @@ async function resolveCompletionRedirectUrl() {
 }
 
 function showCompletionModal(redirectUrl = "", selection = null) {
+  if (completionWindow && !completionWindow.closed) {
+    const url = new URL('completion.html', window.location.href);
+    url.searchParams.set('status', 'success');
+    if (redirectUrl) url.searchParams.set('redirect', redirectUrl);
+    completionWindow.location.replace(url.href);
+    completionWindow.focus();
+    completionWindow = null;
+    return;
+  }
   if (!completeModal) return;
   completionRedirectUrl = redirectUrl;
   completionSelection = selection;
@@ -906,6 +920,12 @@ applicationForm.addEventListener("submit", async (event) => {
 
   submitStatus.textContent = "신청 정보를 전송하고 있습니다.";
   setSubmitting(true);
+  // Open while the click gesture is active, before awaiting server storage.
+  try {
+    const waitingUrl = new URL('completion.html', window.location.href);
+    waitingUrl.searchParams.set('status', 'waiting');
+    completionWindow = window.open(waitingUrl.href, '_blank', 'popup,width=460,height=600');
+  } catch (error) { completionWindow = null; }
 
   try {
     const payload = buildPayload(applicationForm);
@@ -927,6 +947,8 @@ applicationForm.addEventListener("submit", async (event) => {
     updateSummary();
   } catch (error) {
     submitStatus.textContent = error.message;
+    if (completionWindow && !completionWindow.closed) completionWindow.close();
+    completionWindow = null;
   } finally {
     setSubmitting(false);
   }

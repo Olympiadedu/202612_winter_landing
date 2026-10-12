@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="journey.css?v=20261006-spacing">
-  <link rel="stylesheet" href="application-form.css?v=20261012-original-form">
+  <link rel="stylesheet" href="application-form.css?v=20261012-compact-popup">
 </head>
 <body>
   <div class="page-shell">
@@ -139,7 +139,8 @@
                 </div>
             </div>
 
-            <div class="cal-wrap">
+            <p id="calendarInstruction" class="form-note">캠퍼스·전형과목을 선택하면 일정이 표시됩니다.</p>
+            <div class="cal-wrap" hidden>
                 <div class="cal-head">
                     <button id="prevMonthButton" type="button" aria-label="이전 달">‹</button>
                     <strong id="monthTitle">2026.11</strong>
@@ -151,12 +152,12 @@
                 <div id="calendarDays" class="cal-days"></div>
             </div>
 
-            <div class="time-wrap">
+            <div class="time-wrap" hidden>
                 <h4>희망시간 선택</h4>
                 <div id="timeList" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
             </div>
 
-            <div class="date-row">
+            <div class="date-row" hidden>
                 <div class="date-box">
                     <div class="lbl">희망날짜</div>
                     <strong id="selectedDateText">날짜 선택 전</strong>
@@ -248,6 +249,6 @@
 
 
   <script src="config.js?v=20261012-original-form"></script>
-  <script src="application-form.js?v=20261012-original-form"></script>
+  <script src="application-form.js?v=20261012-compact-popup"></script>
 </body>
 </html>
