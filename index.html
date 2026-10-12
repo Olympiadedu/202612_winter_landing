@@ -99,21 +99,22 @@
         <p class="section-lead">무료 진단평가 결과를 바탕으로 우리 아이에게 필요한 겨울학기 학습 방향을 상담해 드립니다.</p>
         <form class="application-form" id="applicationForm">
           <p class="form-intro">캠퍼스와 전형과목을 선택하면 응시 가능한 일정을 확인하는 신청 화면입니다.</p>
-          <p class="form-prelaunch">겨울학기 일정·접수 연결 전: 입력 내용은 전송되지 않습니다.</p>
+          <p class="form-prelaunch" id="connectionStatus" role="status">신청 정보를 불러오는 중입니다.</p>
           <div class="form-grid">
-            <label>학생명<input name="studentName" autocomplete="name" placeholder="학생명"></label>
-            <label>연락처<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000"></label>
-            <label>학년<select name="grade"><option value="">선택</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select></label>
-            <label>학교명<input name="school" placeholder="학교명"></label>
-            <label>캠퍼스<select name="campus" disabled><option>겨울학기 정보 연결 예정</option></select></label>
-            <label>전형과목<select name="subject" disabled><option>캠퍼스 선택 후 표시</option></select></label>
+            <label>학생명<input name="studentName" autocomplete="name" placeholder="학생명" required maxlength="40"></label>
+            <label>연락처<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" required pattern="[0-9\- ]{9,15}"></label>
+            <label>현재 학년<select name="grade" required><option value="">선택</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option></select></label>
+            <label>학교명<input name="school" placeholder="학교명" required maxlength="80"></label>
+            <label>캠퍼스<select name="campus" required disabled><option value="">불러오는 중</option></select></label>
+            <label>전형과목<select name="subject" required disabled><option value="">캠퍼스 선택 후 표시</option></select></label>
           </div>
-          <div class="calendar" aria-label="응시 일정 캘린더 미연결">
+          <div class="calendar" aria-label="응시 일정 캘린더">
             <div class="calendar-head"><button type="button" id="prevMonth" aria-label="이전 달">‹</button><strong id="calendarMonth">2026년 11월</strong><button type="button" id="nextMonth" aria-label="다음 달">›</button></div>
             <div class="calendar-weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
             <div class="calendar-days" id="calendarDays"></div>
           </div>
-          <p class="calendar-note">응시 가능 날짜와 시간은 겨울학기 일정 연결 후 선택할 수 있습니다.</p>
+          <p class="calendar-note">현재 학년·캠퍼스·과목을 선택한 뒤 날짜와 시간을 선택해주세요.</p>
+          <div class="time-options" id="timeOptions" aria-label="응시 시간"></div>
           <div class="selected-summary"><p><span>희망날짜</span><strong>일정 선택 전</strong></p><p><span>희망시간</span><strong>시간 선택 전</strong></p></div>
           <div class="privacy-consent">
             <details class="privacy-details">
@@ -169,6 +170,6 @@
     </footer>
   </div>
   <a class="sticky-link" href="#consultation">무료 진단평가 신청하기</a>
-  <script src="application-preview.js"></script>
+  <script src="application.js?v=20261012-live"></script>
 </body>
 </html>

@@ -9,6 +9,11 @@
 .campaign-hero h1 strong{font-weight:900}
 .campaign-intro{position:absolute;top:41.25cqw;left:7.1%;font-size:clamp(.75rem,2.8vw,1rem);line-height:1.7;margin:0;color:#143166}
 .hero-enrollment{padding:12px 0 38px}
+.calendar-days button:not(:disabled){color:#073b94;background:#e5efff;cursor:pointer;border-radius:6px}
+.calendar-days button[aria-pressed="true"]{background:#073b94;color:#fff}
+.time-options{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.time-options button{border:1px solid #b4c9e5;border-radius:6px;background:#fff;padding:9px 17px;color:#12376d;cursor:pointer;font:inherit}
+.time-options button[aria-pressed="true"]{background:#073b94;color:#fff}
 .campaign-dates{margin:0 10%;display:grid;grid-template-columns:1fr 1fr;text-align:center}
 .campaign-dates>div+div{border-left:1px solid #94b1d7}
 .campaign-dates span{display:block;font-size:clamp(.7rem,2.8vw,.96rem);margin-bottom:8px}
