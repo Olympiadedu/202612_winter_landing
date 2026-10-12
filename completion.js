@@ -14,7 +14,8 @@ completionConfirm.addEventListener('click', () => {
       const url = new URL(value);
       if (url.protocol === 'https:' && ['math.olympiad.ac','www.glec.co.kr','glec.co.kr','www.u2math.co.kr','u2math.co.kr'].includes(url.hostname)) {
         // Do not reuse the small completion window for the academy website.
-        window.open(url.href, '_blank', 'noopener,noreferrer');
+        const sourceWindow = window.opener && !window.opener.closed ? window.opener : window;
+        sourceWindow.open(url.href, '_blank', 'noopener,noreferrer');
         window.close();
         return;
       }
