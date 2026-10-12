@@ -10,24 +10,9 @@ const connectionStatus = document.querySelector('#connectionStatus');
 const state = { month: 11, date: '', time: '', busy: false, completed: false };
 let campaignData = null;
 
-function eligibleMonth(grade, month) {
-  return (month === 11 ? ['초2','초3','초4','초5','초6','중3'] : ['중1','중2','고1','고2']).includes(grade);
-}
 function getTimes(date) {
-  if (!campaignData || !campusSelect.value || !subjectSelect.value || !eligibleMonth(gradeSelect.value, Number(date.slice(5,7)))) return [];
-  const campus = campaignData.campuses.find(c => c.id === campusSelect.value);
-  const subject = campaignData.subjects.find(s => s.id === subjectSelect.value);
-  if (!campus || !subject) return [];
   const today = new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Seoul'}).format(new Date());
-  if (date <= today) return [];
-  const group = gradeSelect.value.startsWith('초') ? '초등' : gradeSelect.value.startsWith('중') ? '중등' : '고등';
-  const matches = (items, aliases) => items.some(v => v === '전체' || aliases.includes(v));
-  // Only the winter campaign's explicitly scheduled dates are selectable.
-  const rules = campaignData.scheduleRules.special.filter(r => r.date === date &&
-    matches(r.campuses,[campus.id,campus.name,campus.name.replace('캠퍼스','')]) &&
-    matches(r.subjects,[subject.id,subject.name]) && matches(r.gradeGroups,[group]));
-  if (rules.some(r => r.status === '휴무')) return [];
-  return [...new Set(rules.filter(r => r.status === '신청가능').flatMap(r => r.times))].sort();
+  return enrollmentSchedule.getTimes(campaignData,{campusId:campusSelect.value,subjectId:subjectSelect.value,grade:gradeSelect.value},date,today);
 }
 function updateSubmit() {
   submitButton.disabled = !campaignData || !privacyAgree.checked || !state.date || !state.time || state.busy || state.completed;
@@ -59,6 +44,20 @@ function renderCalendar() {
   }
 }
 function resetSelection() {state.date='';state.time='';renderCalendar();renderSelection();}
+function updateSubjectOptions() {
+  subjectSelect.replaceChildren(new Option('캠퍼스를 먼저 선택',''));
+  if(!campusSelect.value){subjectSelect.disabled=true;return;}
+  const subjects=campaignData.subjects.filter(s=>s.campusIds.includes(campusSelect.value)&&s.id!=='math_english'&&s.name!=='수학+영어');
+  subjectSelect.replaceChildren();
+  if(subjects.length!==1)subjectSelect.add(new Option('전형과목 선택',''));
+  subjects.forEach(s=>subjectSelect.add(new Option(s.name,s.id)));
+  subjectSelect.disabled=subjects.length===1;
+}
+function formatPhone(value) {
+  const digits=value.replace(/\D/g,'').slice(0,11);
+  return digits.length<=3?digits:digits.length<=7?`${digits.slice(0,3)}-${digits.slice(3)}`:`${digits.slice(0,3)}-${digits.slice(3,7)}-${digits.slice(7)}`;
+}
+form.elements.phone.addEventListener('input',event=>{event.target.value=formatPhone(event.target.value);});
 function loadCampaign() {
   return new Promise((resolve,reject)=>{
     const callback=`winterCampaign_${Date.now()}`;
@@ -70,13 +69,9 @@ function loadCampaign() {
     script.src=`${applicationEndpoint}?action=campus-options&callback=${callback}`;document.head.append(script);
   });
 }
-campusSelect.addEventListener('change',()=>{
-  subjectSelect.replaceChildren(new Option('선택',''));
-  campaignData.subjects.filter(s=>s.campusIds.includes(campusSelect.value)).forEach(s=>subjectSelect.add(new Option(s.name,s.id)));
-  subjectSelect.disabled=!campusSelect.value;resetSelection();
-});
+campusSelect.addEventListener('change',()=>{updateSubjectOptions();resetSelection();});
 subjectSelect.addEventListener('change',resetSelection);
-gradeSelect.addEventListener('change',()=>{state.month=['중1','중2','고1','고2'].includes(gradeSelect.value)?12:11;resetSelection();});
+gradeSelect.addEventListener('change',resetSelection);
 document.querySelector('#prevMonth').addEventListener('click',()=>{state.month=11;renderCalendar();});
 document.querySelector('#nextMonth').addEventListener('click',()=>{state.month=12;renderCalendar();});
 privacyAgree.addEventListener('change',updateSubmit);
@@ -89,8 +84,9 @@ form.addEventListener('submit',async event=>{
   const payload={studentName:form.elements.studentName.value.trim(),phone:form.elements.phone.value.trim(),school:form.elements.school.value.trim(),grade:gradeSelect.value,
     campusId:campus.id,campusName:campus.olympiadName||campus.name,campusLocation:campus.location,region:campus.region||campus.location,
     subjectId:subject.id,subjectName:subject.name,preferredDate:state.date,preferredTime:state.time,
-    referralSource:'겨울학기 랜딩페이지',referralDetail:'2026 겨울학기',privacyAgree:true,
-    utm_source:tracking.get('utm_source')||'',utm_medium:tracking.get('utm_medium')||'',utm_campaign:tracking.get('utm_campaign')||'202612_winter'};
+    referralSource:'랜딩',referralDetail:tracking.get('utm_source')||'기타',privacyAgree:true,
+    utmSource:tracking.get('utm_source')||'',utmMedium:tracking.get('utm_medium')||'',utmCampaign:tracking.get('utm_campaign')||'',
+    utmContent:tracking.get('utm_content')||'',utmTerm:tracking.get('utm_term')||'',landingUrl:location.href,referrer:document.referrer||''};
   state.busy=true;updateSubmit();submitStatus.textContent='신청 정보를 저장하는 중입니다. 잠시만 기다려주세요.';
   try {
     const response=await fetch(applicationEndpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
@@ -106,5 +102,16 @@ renderCalendar();renderSelection();
 loadCampaign().then(data=>{
   campaignData=data;campusSelect.replaceChildren(new Option('선택',''));
   data.campuses.forEach(c=>campusSelect.add(new Option(c.name,c.id)));campusSelect.disabled=false;
-  connectionStatus.textContent='현재 학년 기준으로 신청해주세요. 예비 학년은 다음 학년입니다.';renderCalendar();updateSubmit();
+  connectionStatus.textContent='현재 학년 기준으로 신청해주세요. 기본일정이 적용되며, 별도 일정이 있는 날짜는 해당 일정이 우선합니다.';renderCalendar();updateSubmit();
 }).catch(()=>{connectionStatus.textContent='신청 정보를 불러오지 못했습니다. 새로고침하거나 캠퍼스로 문의해주세요.';});
+let refreshPromise=null;
+function refreshSchedules() {
+  if(!campaignData||state.busy||refreshPromise)return;
+  refreshPromise=loadCampaign().then(data=>{
+    campaignData=data;
+    if(state.date&&!getTimes(state.date).includes(state.time)){state.time='';if(!getTimes(state.date).length)state.date='';}
+    renderCalendar();renderSelection();
+  }).catch(()=>{}).finally(()=>{refreshPromise=null;});
+}
+window.addEventListener('focus',refreshSchedules);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refreshSchedules();});
