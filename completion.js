@@ -13,8 +13,9 @@ completionConfirm.addEventListener('click', () => {
     try {
       const url = new URL(value);
       if (url.protocol === 'https:' && ['math.olympiad.ac','www.glec.co.kr','glec.co.kr','www.u2math.co.kr','u2math.co.kr'].includes(url.hostname)) {
-        window.opener = null;
-        location.assign(url.href);
+        // Do not reuse the small completion window for the academy website.
+        window.open(url.href, '_blank', 'noopener,noreferrer');
+        window.close();
         return;
       }
     } catch (error) { /* Do not follow invalid or untrusted redirects. */ }

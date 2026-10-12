@@ -752,6 +752,7 @@ async function resolveCompletionRedirectUrl() {
 function showCompletionModal(redirectUrl = "", selection = null) {
   if (completionWindow && !completionWindow.closed) {
     const url = new URL('completion.html', window.location.href);
+    url.searchParams.set('v', '20261012-separate-home');
     url.searchParams.set('status', 'success');
     if (redirectUrl) url.searchParams.set('redirect', redirectUrl);
     completionWindow.location.replace(url.href);
@@ -923,6 +924,7 @@ applicationForm.addEventListener("submit", async (event) => {
   // Open while the click gesture is active, before awaiting server storage.
   try {
     const waitingUrl = new URL('completion.html', window.location.href);
+    waitingUrl.searchParams.set('v', '20261012-separate-home');
     waitingUrl.searchParams.set('status', 'waiting');
     completionWindow = window.open(waitingUrl.href, '_blank', 'popup,width=460,height=600');
   } catch (error) { completionWindow = null; }
