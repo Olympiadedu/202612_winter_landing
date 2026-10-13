@@ -382,7 +382,7 @@ function trackApplicationComplete(payload) {
     const fallbackTimeoutId = window.setTimeout(finish, 2500);
 
     window.gtag("event", "generate_lead", {
-      send_to: "G-GQLE2L3HRB",
+      send_to: "G-TMH38TYK4W",
       form_name: "2026 겨울학기 학력진단평가 신청",
       campus_id: payload.campusId,
       campus_name: payload.campusName,
