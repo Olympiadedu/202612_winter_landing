@@ -14,6 +14,19 @@
     gtag('js', new Date());
     gtag('config', 'G-TMH38TYK4W');
   </script>
+  <!-- Meta Pixel: production -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1519104332909986');
+    fbq('track', 'PageView');
+  </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310294b'/%3E%3Cpath d='M14 46 30 17l8 14 12-8' fill='none' stroke='%2336c5d8' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +36,8 @@
   <link rel="stylesheet" href="application-form.css?v=20261012-compact-popup">
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" alt=""
+    src="https://www.facebook.com/tr?id=1519104332909986&amp;ev=PageView&amp;noscript=1"></noscript>
   <div class="page-shell">
     <header class="site-header">
       <img class="top-logo" src="assets/logo-edu.png" alt="올림피아드교육">
@@ -257,6 +272,6 @@
 
 
   <script src="config.js?v=20261012-original-form"></script>
-  <script src="application-form.js?v=20261013-ga4"></script>
+  <script src="application-form.js?v=20261013-meta"></script>
 </body>
 </html>

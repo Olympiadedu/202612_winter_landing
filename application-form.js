@@ -366,7 +366,17 @@ function setSubmitting(value) {
   updateSubmitButtonState();
 }
 
+function trackMetaLead() {
+  // No application PII; do not let a blocked pixel interrupt registration.
+  try {
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "Lead", { content_name: "winter2026_학력진단평가신청" });
+    }
+  } catch (error) {}
+}
+
 function trackApplicationComplete(payload) {
+  trackMetaLead();
   if (typeof window.gtag !== "function") {
     return Promise.resolve();
   }
