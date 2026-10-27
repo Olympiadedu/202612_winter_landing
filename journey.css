@@ -18,6 +18,9 @@
 .campaign-dates>div+div{border-left:1px solid #94b1d7}
 .campaign-dates span{display:block;font-size:clamp(.7rem,2.8vw,.96rem);margin-bottom:8px}
 .campaign-dates strong{font-size:clamp(1.05rem,4.6vw,1.65rem);font-weight:900;letter-spacing:-.05em}.campaign-dates small{font-size:.75rem;margin-left:4px;font-weight:700}
+.campaign-dates .multi-opening-date{font-size:clamp(.88rem,3.5vw,1.35rem);white-space:nowrap}
+.opening-note{margin:12px 10% 0;text-align:right;font-size:.72rem;line-height:1.7;color:#566f90}
+.benefit-dispatch-note{margin:-10px 0 24px;font-size:.72rem;line-height:1.7;color:#566f90}
 .campaign-button{display:flex;align-items:center;justify-content:center;gap:14px;background:#002f90;color:#fff;text-align:center;font-size:.96rem;font-weight:800;text-decoration:none;padding:16px 20px;border-radius:28px;box-shadow:0 5px 15px #124ea01a}
 .campaign-button:hover{background:#0043ba}.campaign-button span{font-size:1.3rem;line-height:1}
 .hero-enrollment>.campaign-button{margin:26px 22% 0;font-size:clamp(.74rem,2.7vw,.96rem);padding:13px 5px}
