@@ -19,8 +19,8 @@
 .campaign-dates span{display:block;font-size:clamp(.7rem,2.8vw,.96rem);margin-bottom:8px}
 .campaign-dates strong{font-size:clamp(1.05rem,4.6vw,1.65rem);font-weight:900;letter-spacing:-.05em}.campaign-dates small{font-size:.75rem;margin-left:4px;font-weight:700}
 .campaign-dates .multi-opening-date{font-size:clamp(.88rem,3.5vw,1.35rem);white-space:nowrap}
-.opening-note{margin:12px 10% 0;text-align:right;font-size:.72rem;line-height:1.7;color:#566f90}
-.benefit-dispatch-note{margin:-10px 0 24px;font-size:.72rem;line-height:1.7;color:#566f90}
+.opening-note{margin:4px 0 0;text-align:center;font-size:.72rem;line-height:1.7;color:#566f90}
+.benefit-lines .benefit-dispatch-note{grid-column:1/-1;margin:0;text-align:left;font-size:.7rem;line-height:1.7;color:#566f90}
 .campaign-button{display:flex;align-items:center;justify-content:center;gap:14px;background:#002f90;color:#fff;text-align:center;font-size:.96rem;font-weight:800;text-decoration:none;padding:16px 20px;border-radius:28px;box-shadow:0 5px 15px #124ea01a}
 .campaign-button:hover{background:#0043ba}.campaign-button span{font-size:1.3rem;line-height:1}
 .hero-enrollment>.campaign-button{margin:26px 22% 0;font-size:clamp(.74rem,2.7vw,.96rem);padding:13px 5px}
@@ -38,6 +38,9 @@
 .benefit-lines li{display:flex;gap:13px;padding:18px;background:#fff;border:1px solid #dae5f5;border-radius:12px;box-shadow:0 6px 16px #294e8109}
 .benefit-lines li>span{font-size:1.2rem;font-weight:900;color:#316cb5;line-height:1.4}.benefit-lines li>div{flex:1;min-width:0}.benefit-lines h3{font-size:1rem;line-height:1.55;letter-spacing:-.045em;margin:0 0 7px;color:#123e78}.benefit-lines p{font-size:.78rem;line-height:1.7;color:#66809d;margin:0}
 .voucher-benefit>div{position:relative;padding-right:97px;min-height:72px}.voucher-ticket{position:absolute;right:0;top:3px;width:91px;min-height:64px;border:1px solid #b8cef1;border-radius:8px;transform:rotate(-5deg);background:#eaf2ff;color:#003e9b;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:3px 5px 0 #dfe9f8}.voucher-ticket span{font-size:.7rem}.voucher-ticket strong{font-size:1rem;line-height:1.5}
+.voucher-benefit>div{display:grid;grid-template-columns:minmax(0,1fr) 91px;align-items:start;gap:10px 13px;padding-right:0}
+.voucher-copy{min-width:0}
+.voucher-benefit .voucher-ticket{position:static;grid-column:2;grid-row:1;width:91px;margin:0}
 .achievement{background:linear-gradient(150deg,#e1eeff,#f5f9ff);overflow:hidden;text-align:center}
 .achievement:before{content:'';position:absolute;width:520px;height:150px;border:2px solid #fff8;border-radius:50%;left:-150px;top:300px;transform:rotate(-24deg);pointer-events:none}
 .achievement .campaign-label{margin-bottom:12px}.achievement h2{margin-bottom:30px}
