@@ -311,7 +311,8 @@ function getSpecialTimesForDate(date) {
   if (globalClosedRule) return [];
 
   const matchingRules = dateRules.filter(ruleMatchesSelection);
-  if (matchingRules.length === 0) return [];
+  // Another campus/subject/grade's exception must not suppress this selection's basic schedule.
+  if (matchingRules.length === 0) return null;
   if (matchingRules.some((rule) => isClosedScheduleStatus(rule.status))) return [];
   return uniqueSortedTimes(matchingRules);
 }
