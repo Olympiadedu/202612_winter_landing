@@ -273,5 +273,24 @@
 
   <script src="config.js?v=20261012-original-form"></script>
   <script src="application-form.js?v=20261028-schedule-fallback"></script>
+  <script>
+    (() => {
+      if (location.hash) return;
+      const consultation = document.getElementById('consultation');
+      let userInteracted = false;
+      const stopAutoScroll = () => { userInteracted = true; };
+      ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(type => {
+        window.addEventListener(type, stopAutoScroll, { once: true, passive: true });
+      });
+      const showConsultation = () => {
+        if (!userInteracted && !location.hash) {
+          consultation.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+      };
+      showConsultation();
+      // Keep the initial position aligned after the Korean web font changes layout.
+      if (document.fonts) document.fonts.ready.then(showConsultation);
+    })();
+  </script>
 </body>
 </html>
